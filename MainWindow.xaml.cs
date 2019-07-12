@@ -20,6 +20,7 @@ namespace TextReplacer
 			InitializeComponent();
 		}
 
+		List<string> listOfNewFiles = new List<string>();
 		List<string> files = new List<string>();
 		RadioButton rb;
 		private void FilesDrop(object sender, DragEventArgs e)
@@ -49,7 +50,6 @@ namespace TextReplacer
 				}
 				FileDump.Text += f;
 			});
-
 		}
 		private void ClearFiles_Click(object sender, RoutedEventArgs e)
 		{
@@ -81,7 +81,7 @@ namespace TextReplacer
 		}
 		private void Submit_Click(object sender, RoutedEventArgs e)
 		{
-
+			listOfNewFiles.Clear();
 			if (FindText.Text == "" || ReplaceWith.Text == "")
 			{
 				alertMessage.Text = "Input fields cannot be empty";
@@ -106,6 +106,7 @@ namespace TextReplacer
 					ContructFiles(true);
 					break;
 			}
+			WritFilesToGit(listOfNewFiles);
 
 		}
 		private void GenerateEDIFiles()
@@ -126,11 +127,11 @@ namespace TextReplacer
 				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEPS" + (Convert.ToInt16(FindYear) + 1).ToString() + ".cs");
 
 				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineFPS" + (Convert.ToInt16(FindYear) + 1).ToString() + ".cs");
-				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageFPS" + (Convert.ToInt16(ReplaceYear) + 1).ToString() + ".cs");
+				//Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageFPS" + (Convert.ToInt16(ReplaceYear) + 1).ToString() + ".cs");
 
 
 				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineEYU" + FindYear + ".cs");
-				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEYU" + FindYear + ".cs");
+				//Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEYU" + FindYear + ".cs");
 
 
 
@@ -194,36 +195,14 @@ namespace TextReplacer
 		{
 			try
 			{
-
-				string path = @"C:\"+ CodePath.Text+@"\FilesCreatedPaths.txt";
-				//if (!File.Exists(path))
-				//{
-				//	File.Create(path);
-				//}
-
-				TextWriter tw = new StreamWriter(path);
-
-				
-				//switch (fileType)
-				//{
-				//	case "EYU":
-
-				//		break;
-				//	case "P11D":
-				//		break;
-
-
-				//}
-
-
 				files.ForEach(file =>
 				{
 					// Processing
 					var file_extension = Path.GetExtension(file); // ex: .cls
 					string file_path;
-					string new_file=null;
-					string text_to_replace= FindText.Text;
-					string replacing_text= ReplaceWith.Text;
+					string new_file = null;
+					string text_to_replace = FindText.Text;
+					string replacing_text = ReplaceWith.Text;
 					string file_name;
 
 
@@ -245,18 +224,18 @@ namespace TextReplacer
 					else if (!skipDirectoryCreation)
 					{
 
-						if (file.ToString().Contains("FPS")|| file.ToString().Contains("EPS"))
+						if (file.ToString().Contains("FPS") || file.ToString().Contains("EPS"))
 
 						{
-							text_to_replace = (Convert.ToInt16(text_to_replace.Substring(2,2)) +1).ToString();
-							text_to_replace = (Convert.ToInt16(replacing_text.Substring(2, 2)) + 1).ToString();
+							text_to_replace = (Convert.ToInt16(text_to_replace.Substring(2, 2)) + 1).ToString();
+							replacing_text = (Convert.ToInt16(replacing_text.Substring(2, 2)) + 1).ToString();
 
 						}
 						else if (file.ToString().Contains("EYU"))
 
 						{
 							text_to_replace = text_to_replace.Substring(2, 2);
-							text_to_replace = text_to_replace.Substring(2, 2);
+							replacing_text = replacing_text.Substring(2, 2);
 
 						}
 
@@ -267,7 +246,8 @@ namespace TextReplacer
 						new_file = Path.Combine(file_path, $@"{file_name}{file_extension}");
 					}
 
-					
+
+					listOfNewFiles.Add(new_file);
 
 					var file_encoding = GetFileEncoding(file);
 					var file_content = new StringBuilder();
@@ -288,80 +268,63 @@ namespace TextReplacer
 					{
 						streamWriter.Write(file_content.ToString());
 
-						//string gitCommand = "git";
-						//string gitAddArgument = @"add " + "\"" + new_file + "\"";
-						////string gitCommitArgument = @"commit ""explanations_of_changes"" "
-						////string gitPushArgument = @"push our_remote"
-
-						//var startInfo = new ProcessStartInfo();
-						//startInfo.WorkingDirectory = $"C:\\{CodePath.Text}";
-						//startInfo.FileName = @"C:\Program Files\Git\git-bash.exe";
-						//startInfo.Arguments = @"add " + "\"" + new_file + "\"";
-						//startInfo.UseShellExecute = false;
-						//startInfo.CreateNoWindow = true;
-						//using (Process process = Process.Start(startInfo.FileName, startInfo.Arguments))
-						//{
-						//	process.WaitForExit();
-						//}
-
-						//Process.Start(gitCommand, gitAddArgument);
-						//Process.Start(gitCommand, gitCommitArgument);
-						//Process.Start(gitCommand, gitPushArgument);
-						//AppDomain.CurrentDomain.BaseDirectory
-
-						//var files = new string[] { @"C:\Program Files\IIS\Microsoft Web Deploy\Microsoft.Web.Deployment.dll", @"C:\Program Files\IIS\Microsoft Web Deploy\Microsoft.Web.Deployment.dll" };
-						var appended_files = @"add " + "\"" + new_file + "\"";
-						//.Aggregate("add", (acc, f) => $"{acc} {f}");
-						//Console.WriteLine(appended_files);
-						//using (Process process = new Process())
-						//{
-						//	var startInfo = new ProcessStartInfo
-						//	{
-						//		WorkingDirectory = $@"C:\{CodePath.Text}",
-						//		WindowStyle = ProcessWindowStyle.Hidden,
-						//		FileName = "git",
-						//		//RedirectStandardInput = true,
-						//		RedirectStandardOutput = true,
-						//		RedirectStandardError = true,
-						//		UseShellExecute = false,
-						//		Arguments = appended_files,
-						//	};
-
-						//	process.StartInfo = startInfo;
-						//	process.Start();
-						//	var output = process.StandardOutput.ReadToEnd();
-						//	var error = process.StandardError.ReadToEnd();
-						//	process.WaitForExit();
-						//	//Console.WriteLine(output);
-						//	//Console.WriteLine(error);
-						//}
-
 					}
 
-					//string gitCommand = "git";
-
-					//new_file.Split();
-					//string gitAddArgument = @"add ""IPRLUK/IPUKMeta/Package/PostDeploy/anytime/30 Payroll (UK)/040 Views/Client/040 P11D/2019/""";//@"add " + "\"" + new_file.Replace(@"C:\ihcm.git\", "");
-					////string gitCommitArgument = @"commit ""explanations_of_changes"" "
-					////string gitPushArgument = @"push our_remote"
-
-					//Process.Start(
-
-					//Process.Start(gitCommand, gitAddArgument);
-					//Process.Start(gitCommand, gitCommitArgument);
-					//Process.Start(gitCommand, gitPushArgument);
-					tw.WriteLine(new_file.ToString());
-
-					alertMessage.Foreground = Brushes.Green;
-					alertMessage.Text = "Files created, check " + path+ " for list of files created";
-					alertMessage.Visibility = Visibility.Visible;
+					
 				});
-				tw.Close();
+
+				//WritFilesToGit(listOfNewFiles);
 			}
 			catch (Exception ex)
 			{
 				alertMessage.Text = ex.ToString();
 				alertMessage.Foreground = Brushes.Red;
+				alertMessage.Visibility = Visibility.Visible;
+			}
+
+		}
+
+		private void WritFilesToGit(List<string> listOfNewFiles)
+		{
+			var appended_files = listOfNewFiles.Select(f => $"\"{f}\"")
+										.Aggregate("add ", (acc, f) => $"{acc} {f}");
+
+			string path = @"C:\" + CodePath.Text + @"\FilesCreatedPaths.txt";
+
+
+			TextWriter tw = new StreamWriter(path);
+			foreach(var f in listOfNewFiles)
+				tw.WriteLine(f);
+			tw.Close();
+
+			//Console.WriteLine(appended_files);
+			using (Process process = new Process())
+			{
+				var startInfo = new ProcessStartInfo
+				{
+					WorkingDirectory = $@"C:\{CodePath.Text}",
+					WindowStyle = ProcessWindowStyle.Hidden,
+					FileName = "\"C:\\Program Files\\Git\\bin\\git.exe\"",
+					//RedirectStandardInput = true,
+					RedirectStandardOutput = true,
+					RedirectStandardError = true,
+					UseShellExecute = false,
+					Arguments = appended_files,
+				};
+
+				process.StartInfo = startInfo;
+
+				process.Start();
+
+
+				var output = process.StandardOutput.ReadToEnd();
+				var error = process.StandardError.ReadToEnd();
+				process.WaitForExit();
+				//Console.WriteLine(output);
+				//Console.WriteLine(error);
+
+				alertMessage.Foreground = Brushes.Green;
+				alertMessage.Text = "Files created, check " + path + " for list of files created";
 				alertMessage.Visibility = Visibility.Visible;
 			}
 		}
