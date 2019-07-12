@@ -103,7 +103,7 @@ namespace TextReplacer
 					GenerateEDIFiles();
 					break;
 				case "OTHER":
-					ContructFiles(true, FindText.Text, ReplaceWith.Text);
+					ContructFiles(true);
 					break;
 			}
 
@@ -115,43 +115,27 @@ namespace TextReplacer
 				List<string> paths = new List<string>();
 				List<string> Input_files = new List<string>();
 
-				//paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\" + FindText.Text);
-				//paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\050 SP\AdpUKPayrollWebApi\P11D\" + FindText.Text);
-				//paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\050 SP\AdpIpUkP11D\" + FindText.Text);
-				////paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\" + FindText.Text);
-				////050 SP\AdpUKPayrollWebApi\P11D
 
-				////paths.ForEach(path =>
-				////{
-				////	Input_files = Directory.GetFiles(path).ToList();
-				////});
+				//getFindAndReplaceText(out string  EPS_FindYear, out string EPS_ReplaceYear);
 
-				//foreach (var path in paths)
-				//{
-				//	Input_files.AddRange(Directory.GetFiles(path).ToList());
-				//}
-
-				var EPS_FindYear = FindText.Text.Substring(0,2);
-				var EPS_ReplaceYear = ReplaceWith.Text.Substring(0, 2);
+				var FindYear = FindText.Text.Substring(2, 2);
+				var ReplaceYear = ReplaceWith.Text.Substring(2, 2);
 
 				//EPS
-				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineEPS" + EPS_FindYear + ".cs");
-				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEPS" + EPS_FindYear + ".cs");
-				//Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PreDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\vwP11D" + FindText.Text + "RESULTS.pre.sql");
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineEPS" + (Convert.ToInt16(FindYear) + 1).ToString() + ".cs");
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEPS" + (Convert.ToInt16(FindYear) + 1).ToString() + ".cs");
 
-				//Create folders for maintanace work
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineFPS" + (Convert.ToInt16(FindYear) + 1).ToString() + ".cs");
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageFPS" + (Convert.ToInt16(ReplaceYear) + 1).ToString() + ".cs");
 
-				//dropped_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\onetime\30 Payroll (UK)\DBO\_InsertDataInToP11DTradeOrgEntTypeTable" + FindText.Text + "CARSANDFUELRESULT.pre.sql");
-				//dropped_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\vwP11D" + FindText.Text + "EMPLOYEEDETAILS.pre.sql");
-				//dropped_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PreDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\vwP11D" + FindText.Text + "RESULTS.pre.sql");
-				//dropped_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PreDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\vwP11D" + FindText.Text + "RESULTS.pre.sql");
-				//C:\ihcm.git\IPRLUK\IPUKMeta\Package\PostDeploy\onetime\30 Payroll(UK)\DBO\20181122.2_InsertDataInToP11DTradeOrgEntTypeTable2018.sql
-				//C:\ihcm.git\IPRLUK\IPUKMeta\Package\PostDeploy\onetime\30 Payroll(UK)\DBO\20181122.1_Insert_rows_p11dexpensesmadetype_and_p11dothersubtype_2018.sql
-				//C:\ihcm.git\IPRLUK\Source\Database\eForms\Upgrade\20180220_Insert_eForm_WS2b_TaxYear2017.sql
-				//C:\ihcm.git\IPRLUK\Source\Database\eForms\Upgrade\20171221_Insert__IPSYS_EFORM_Forms_P11D_TaxYear2017.sql
+
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineEYU" + FindYear + ".cs");
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEYU" + FindYear + ".cs");
+
+
 
 				InputFiles(Input_files);
-				ContructFiles(false, FindText.Text.Substring(2, 2), ReplaceWith.Text.Substring(2, 2));
+				ContructFiles(false);
 			}
 			catch (Exception ex)
 			{
@@ -160,6 +144,9 @@ namespace TextReplacer
 				alertMessage.Visibility = Visibility.Visible;
 			}
 		}
+
+		
+
 		private void GenerateP11DFiles()
 		{
 			try
@@ -171,13 +158,7 @@ namespace TextReplacer
 				paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\" + FindText.Text);
 				paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\050 SP\AdpUKPayrollWebApi\P11D\" + FindText.Text);
 				paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\050 SP\AdpIpUkP11D\" + FindText.Text);
-				//paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\" + FindText.Text);
-				//050 SP\AdpUKPayrollWebApi\P11D
-
-				//paths.ForEach(path =>
-				//{
-				//	Input_files = Directory.GetFiles(path).ToList();
-				//});
+				
 
 				foreach (var path in paths)
 				{
@@ -200,7 +181,7 @@ namespace TextReplacer
 				//C:\ihcm.git\IPRLUK\Source\Database\eForms\Upgrade\20171221_Insert__IPSYS_EFORM_Forms_P11D_TaxYear2017.sql
 
 				InputFiles(Input_files);
-				ContructFiles(true, FindText.Text, ReplaceWith.Text);
+				ContructFiles(true);
 			}
 			catch (Exception ex)
 			{
@@ -209,7 +190,7 @@ namespace TextReplacer
 				alertMessage.Visibility = Visibility.Visible;
 			}
 		}
-		private void ContructFiles(bool skipDirectoryCreation,string text_to_replace,string replacing_text)
+		private void ContructFiles(bool skipDirectoryCreation)
 		{
 			try
 			{
@@ -222,19 +203,36 @@ namespace TextReplacer
 
 				TextWriter tw = new StreamWriter(path);
 
+				
+				//switch (fileType)
+				//{
+				//	case "EYU":
+
+				//		break;
+				//	case "P11D":
+				//		break;
+
+
+				//}
+
+
 				files.ForEach(file =>
 				{
 					// Processing
 					var file_extension = Path.GetExtension(file); // ex: .cls
 					string file_path;
 					string new_file=null;
+					string text_to_replace= FindText.Text;
+					string replacing_text= ReplaceWith.Text;
+					string file_name;
 
-					var file_name = Path.GetFileNameWithoutExtension(file).Replace(text_to_replace, replacing_text); // ex: ediLineEPS19
+
 					if (skipDirectoryCreation)
 					{
-						 file_path = Path.GetDirectoryName(file).Replace(text_to_replace, ""); // ex: C:\TextReplacer\TextReplacer
-						 
-						//file_extension = Path.GetExtension(file);
+						file_path = Path.GetDirectoryName(file).Replace(text_to_replace, ""); // ex: C:\TextReplacer\TextReplacer
+
+						file_name = Path.GetFileNameWithoutExtension(file).Replace(text_to_replace, replacing_text); // ex: ediLineEPS19
+																													 //file_extension = Path.GetExtension(file);
 
 						if (!Directory.Exists(file_path + replacing_text))
 						{
@@ -246,13 +244,31 @@ namespace TextReplacer
 
 					else if (!skipDirectoryCreation)
 					{
-						file_path = Path.GetDirectoryName(file); // ex: C:\TextReplacer\TextReplacer
-						
-						//file_extension = Path.GetExtension(file);
 
+						if (file.ToString().Contains("FPS")|| file.ToString().Contains("EPS"))
+
+						{
+							text_to_replace = (Convert.ToInt16(text_to_replace.Substring(2,2)) +1).ToString();
+							text_to_replace = (Convert.ToInt16(replacing_text.Substring(2, 2)) + 1).ToString();
+
+						}
+						else if (file.ToString().Contains("EYU"))
+
+						{
+							text_to_replace = text_to_replace.Substring(2, 2);
+							text_to_replace = text_to_replace.Substring(2, 2);
+
+						}
+
+						file_path = Path.GetDirectoryName(file); // ex: C:\TextReplacer\TextReplacer
+
+						//file_extension = Path.GetExtension(file);
+						file_name = Path.GetFileNameWithoutExtension(file).Replace(text_to_replace, replacing_text); // ex: ediLineEPS19
 						new_file = Path.Combine(file_path, $@"{file_name}{file_extension}");
 					}
+
 					
+
 					var file_encoding = GetFileEncoding(file);
 					var file_content = new StringBuilder();
 					const int BufferSize = 128;
@@ -293,32 +309,32 @@ namespace TextReplacer
 						//Process.Start(gitCommand, gitPushArgument);
 						//AppDomain.CurrentDomain.BaseDirectory
 
-						var files = new string[] { @"C:\Program Files\IIS\Microsoft Web Deploy\Microsoft.Web.Deployment.dll", @"C:\Program Files\IIS\Microsoft Web Deploy\Microsoft.Web.Deployment.dll" };
-						var appended_files = files.Select(file => $"\"{file}\"")
-							.Aggregate("", (acc, file) => $"{acc} {file}");
-						Console.WriteLine(appended_files);
-						using (Process process = new Process())
-						{
-							var startInfo = new ProcessStartInfo
-							{
-								WorkingDirectory = @"C:\Users\gubbalpa\Documents\ihcm.pf.webv2",
-								WindowStyle = ProcessWindowStyle.Hidden,
-								FileName = "git",
-								//RedirectStandardInput = true,
-								RedirectStandardOutput = true,
-								RedirectStandardError = true,
-								UseShellExecute = false,
-								Arguments = appended_files,
-							};
+						//var files = new string[] { @"C:\Program Files\IIS\Microsoft Web Deploy\Microsoft.Web.Deployment.dll", @"C:\Program Files\IIS\Microsoft Web Deploy\Microsoft.Web.Deployment.dll" };
+						var appended_files = @"add " + "\"" + new_file + "\"";
+						//.Aggregate("add", (acc, f) => $"{acc} {f}");
+						//Console.WriteLine(appended_files);
+						//using (Process process = new Process())
+						//{
+						//	var startInfo = new ProcessStartInfo
+						//	{
+						//		WorkingDirectory = $@"C:\{CodePath.Text}",
+						//		WindowStyle = ProcessWindowStyle.Hidden,
+						//		FileName = "git",
+						//		//RedirectStandardInput = true,
+						//		RedirectStandardOutput = true,
+						//		RedirectStandardError = true,
+						//		UseShellExecute = false,
+						//		Arguments = appended_files,
+						//	};
 
-							process.StartInfo = startInfo;
-							process.Start();
-							var output = process.StandardOutput.ReadToEnd();
-							var error = process.StandardError.ReadToEnd();
-							process.WaitForExit();
-							//Console.WriteLine(output);
-							//Console.WriteLine(error);
-						}
+						//	process.StartInfo = startInfo;
+						//	process.Start();
+						//	var output = process.StandardOutput.ReadToEnd();
+						//	var error = process.StandardError.ReadToEnd();
+						//	process.WaitForExit();
+						//	//Console.WriteLine(output);
+						//	//Console.WriteLine(error);
+						//}
 
 					}
 
