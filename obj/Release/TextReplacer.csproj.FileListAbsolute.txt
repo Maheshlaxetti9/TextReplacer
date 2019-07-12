@@ -1,0 +1,15 @@
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\bin\Release\TextReplacer.exe.config
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\bin\Release\TextReplacer.exe
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\bin\Release\TextReplacer.pdb
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\MainWindow.g.cs
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\App.g.cs
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer_Content.g.cs
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer_MarkupCompile.cache
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer_MarkupCompile.lref
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\MainWindow.baml
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer.g.resources
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer.Properties.Resources.resources
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer.csproj.GenerateResource.cache
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer.csproj.CoreCompileInputs.cache
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer.exe
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Release\TextReplacer.pdb

@@ -1,0 +1,32 @@
+S:\Learnings\C#\TextReplacer\TextReplacer\bin\Debug\TextReplacer.exe.config
+S:\Learnings\C#\TextReplacer\TextReplacer\bin\Debug\TextReplacer.exe
+S:\Learnings\C#\TextReplacer\TextReplacer\bin\Debug\TextReplacer.pdb
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer.csprojAssemblyReference.cache
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\MainWindow.g.cs
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\App.g.cs
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer_Content.g.cs
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer_MarkupCompile.cache
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer_MarkupCompile.lref
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\MainWindow.baml
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer.g.resources
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer.Properties.Resources.resources
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer.csproj.GenerateResource.cache
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer.csproj.CoreCompileInputs.cache
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer.exe
+S:\Learnings\C#\TextReplacer\TextReplacer\obj\Debug\TextReplacer.pdb
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\bin\Debug\TextReplacer.exe.config
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\bin\Debug\TextReplacer.exe
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\bin\Debug\TextReplacer.pdb
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer.csprojAssemblyReference.cache
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\MainWindow.g.cs
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\App.g.cs
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer_Content.g.cs
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer_MarkupCompile.cache
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer_MarkupCompile.lref
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\MainWindow.baml
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer.g.resources
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer.Properties.Resources.resources
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer.csproj.GenerateResource.cache
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer.csproj.CoreCompileInputs.cache
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer.exe
+E:\IPayroll\IHCM\Compliance Automation\TextReplacer-master\TextReplacer-master\obj\Debug\TextReplacer.pdb
