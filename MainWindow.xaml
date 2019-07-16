@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextReplacer"
         mc:Ignorable="d"
-        Height="482" Width="800" Title="Text Replacer" FontSize="14" Background="LightBlue"  SizeToContent="WidthAndHeight">
+        Height="602" Width="800" Title="Text Replacer" FontSize="14" Background="LightBlue"  SizeToContent="WidthAndHeight">
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
             <DockPanel>
@@ -48,7 +48,7 @@
 				<StackPanel Margin = "5">
 					<RadioButton x:Name = "ALL" Margin = "5"  GroupName = "Task" Foreground="White" Content = "ALL" Checked="ALL_Checked" />
 					<RadioButton x:Name = "P11D" Margin = "5"  GroupName = "Task" Foreground="White" Content = "P11D" Checked="P11D_Checked" />
-					<RadioButton x:Name = "EDI" Margin = "5"  GroupName = "Task" Foreground="White" Content = "EDI" Checked="EDI_Checked" />
+					<RadioButton x:Name = "EDI" Margin = "5"  GroupName = "Task" Foreground="White" Content = "EDI(FPS and EPS)" Checked="EDI_Checked" />
 					<RadioButton x:Name = "OTHER" Margin = "5"  GroupName = "Task" Foreground="White" Content = "Other" Checked="Other_Checked" />
 				</StackPanel>
 				

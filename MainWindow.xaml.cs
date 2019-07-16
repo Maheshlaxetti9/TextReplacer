@@ -123,17 +123,16 @@ namespace TextReplacer
 				var ReplaceYear = ReplaceWith.Text.Substring(2, 2);
 
 				//EPS
-				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineEPS" + (Convert.ToInt16(FindYear) + 1).ToString() + ".cs");
-				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEPS" + (Convert.ToInt16(FindYear) + 1).ToString() + ".cs");
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineEPS" + (Convert.ToInt16(FindYear) + 2).ToString() + ".cs");
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEPS" + (Convert.ToInt16(FindYear) + 2).ToString() + ".cs");
 
-				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineFPS" + (Convert.ToInt16(FindYear) + 1).ToString() + ".cs");
+				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineFPS" + (Convert.ToInt16(FindYear) + 2).ToString() + ".cs");
+				//Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageFPS" + (Convert.ToInt16(ReplaceYear) + 1).ToString() + ".cs");
+				//Comment- Manual creation
 				//Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageFPS" + (Convert.ToInt16(ReplaceYear) + 1).ToString() + ".cs");
 
-
-				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineEYU" + FindYear + ".cs");
+				//Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Lines\LineEYU" + FindYear + ".cs");
 				//Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\Source\dotNet\Adp.IpUk.EDI\Adp.IpUk.EDI.Interchange\Messages\MessageEYU" + FindYear + ".cs");
-
-
 
 				InputFiles(Input_files);
 				ContructFiles(false);
@@ -146,7 +145,7 @@ namespace TextReplacer
 			}
 		}
 
-		
+
 
 		private void GenerateP11DFiles()
 		{
@@ -159,7 +158,25 @@ namespace TextReplacer
 				paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\" + FindText.Text);
 				paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\050 SP\AdpUKPayrollWebApi\P11D\" + FindText.Text);
 				paths.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PostDeploy\anytime\30 Payroll (UK)\050 SP\AdpIpUkP11D\" + FindText.Text);
-				
+
+
+
+
+				List<string> test = new List<string>();
+
+
+
+				//Comment- For this file different logic has to be implemented as the content in the file has to be replaced with a check for version.
+				//test.Add(Directory.GetFiles(@"C:\ihcm.git\IPRLUK\Source\Database\eForms\Upgrade", $@"*Insert_eForm_WS2b_TaxYear{FindText.Text}.sql")[0]);
+				//Comment- For this file different logic has to be implemented as the content in the file has to be replaced with a check for version.
+				//test.Add(Directory.GetFiles(@"C:\ihcm.git\IPRLUK\Source\Database\eForms\Upgrade", $@"*_Insert__IPSYS_EFORM_Forms_P11D_TaxYear{FindText.Text}.sql")[0]);
+
+				//Files to be created manually
+				//test.Add(Directory.GetFiles(@"C:\ihcm.git\IPRLUK\Source\Database\eForms\Upgrade", $@"*Insert_eForm_WS2b_TaxYear{FindText.Text}.sql")[0]);
+				//test.Add(Directory.GetFiles(@"C:\ihcm.git\IPRLUK\Source\Database\eForms\Upgrade", $@"*_Insert__IPSYS_EFORM_Forms_P11D_TaxYear{FindText.Text}.sql")[0]);
+
+
+				//test[0] = test[0].Replace(test[0].Substring(test[0].LastIndexOf('\\') + 1, (test[0].IndexOf('_') - 1 - test[0].LastIndexOf('\\'))), DateTime.Now.ToString("yyyyMMdd"));
 
 				foreach (var path in paths)
 				{
@@ -169,6 +186,15 @@ namespace TextReplacer
 				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PreDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\vwP11D" + FindText.Text + "CARSANDFUELRESULT.pre.sql");
 				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PreDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\vwP11D" + FindText.Text + "EMPLOYEEDETAILS.pre.sql");
 				Input_files.Add(@"C:\" + CodePath.Text + @"\IPRLUK\IPUKMeta\Package\PreDeploy\anytime\30 Payroll (UK)\040 Views\Client\040 P11D\vwP11D" + FindText.Text + "RESULTS.pre.sql");
+
+				//comment- update unique identifier value after creatig new file
+				Input_files.Add(Directory.GetFiles(@"C:\ihcm.git\IPRLUK\IPUKMeta\Package\PostDeploy\onetime\30 Payroll (UK)\DBO", $@"*InsertDataInToP11DTradeOrgEntTypeTable{FindText.Text}.sql")[0]);
+				Input_files.Add(Directory.GetFiles(@"C:\ihcm.git\IPRLUK\IPUKMeta\Package\PostDeploy\onetime\30 Payroll (UK)\DBO", $@"*Insert_rows_p11dexpensesmadetype_and_p11dothersubtype_{FindText.Text}.sql")[0]);
+				Input_files.Add(Directory.GetFiles(@"C:\ihcm.git\IPRLUK\Source\Database\Static\Upgrade", $@"*2018*DBTask_P11DBenefitControlInsertion.sql")[0]);
+
+
+				//Input_files.Add(Directory.GetFiles(@"C:\ihcm.git\IPRLUK\IPUKMeta\Package\PostDeploy\onetime\30 Payroll (UK)\DBO", $@"*Insert_rows_p11dexpensesmadetype_and_p11dothersubtype_{FindText.Text}.sql")[0]);
+
 
 				//Create folders for maintanace work
 
@@ -195,30 +221,55 @@ namespace TextReplacer
 		{
 			try
 			{
-				files.ForEach(file =>
+				var filesCopyFolder = $@"C:\{CodePath.Text}\ComplianceChanges_{ReplaceWith.Text}\";
+				if (!Directory.Exists(filesCopyFolder))
+				{
+					Directory.CreateDirectory(filesCopyFolder);
+				}
+
+				foreach (var file in files)
 				{
 					// Processing
 					var file_extension = Path.GetExtension(file); // ex: .cls
 					string file_path;
 					string new_file = null;
+					string copy_file = null;
 					string text_to_replace = FindText.Text;
 					string replacing_text = ReplaceWith.Text;
-					string file_name;
-
+					string file_name=null;
 
 					if (skipDirectoryCreation)
 					{
 						file_path = Path.GetDirectoryName(file).Replace(text_to_replace, ""); // ex: C:\TextReplacer\TextReplacer
+																							  //file_name = Path.GetFileNameWithoutExtension(file).Replace(text_to_replace, replacing_text); // ex: ediLineEPS19
+																							  //file_extension = Path.GetExtension(file);
 
-						file_name = Path.GetFileNameWithoutExtension(file).Replace(text_to_replace, replacing_text); // ex: ediLineEPS19
-																													 //file_extension = Path.GetExtension(file);
-
-						if (!Directory.Exists(file_path + replacing_text))
+						if ((file.ToString().Contains("InsertDataInToP11DTradeOrgEntTypeTable") || file.ToString().Contains("p11dexpensesmadetype")))
 						{
-							Directory.CreateDirectory(file_path + replacing_text);
+							file_name = file.Replace(file.Substring(file.LastIndexOf('\\') + 1, (file.IndexOf('_') - file.LastIndexOf('\\')) - 1), DateTime.Now.ToString("yyyyMMdd"));
+							file_name = Path.GetFileNameWithoutExtension(file_name).Replace(text_to_replace, replacing_text);
+							file_path = Path.GetDirectoryName(file);
+							new_file = Path.Combine(file_path, $@"{file_name}{file_extension}");
 						}
+						else if ((file.ToString().Contains("P11DBenefitControlInsertion")))
+						{
+							//manual: replace text manually in the file
+							//manual: check leap years related files and replace files
+							file_name = file.Replace(file.Substring(file.LastIndexOf('\\') + 5, (file.IndexOf('_', file.IndexOf('_') + 1) - file.LastIndexOf('\\')) - 5), DateTime.Now.ToString("yyyyMMdd"));
+							file_name = Path.GetFileNameWithoutExtension(file_name).Replace(text_to_replace, replacing_text);
+							file_path = Path.GetDirectoryName(file);
+							new_file = Path.Combine(file_path, $@"{file_name}{file_extension}");
 
-						new_file = Path.Combine(file_path + replacing_text, $@"{file_name}{file_extension}");
+						}
+						else
+						{
+							if (!Directory.Exists(file_path + replacing_text))
+							{
+								Directory.CreateDirectory(file_path + replacing_text);
+							}
+							file_name = Path.GetFileNameWithoutExtension(file).Replace(text_to_replace, replacing_text); // ex: ediLineEPS19
+							new_file = Path.Combine(file_path + replacing_text, $@"{file_name}{file_extension}");
+						}
 					}
 
 					else if (!skipDirectoryCreation)
@@ -227,28 +278,30 @@ namespace TextReplacer
 						if (file.ToString().Contains("FPS") || file.ToString().Contains("EPS"))
 
 						{
-							text_to_replace = (Convert.ToInt16(text_to_replace.Substring(2, 2)) + 1).ToString();
-							replacing_text = (Convert.ToInt16(replacing_text.Substring(2, 2)) + 1).ToString();
+							text_to_replace = (Convert.ToInt16(text_to_replace.Substring(2, 2)) + 2).ToString();
+							replacing_text = (Convert.ToInt16(replacing_text.Substring(2, 2)) + 2).ToString();
 
 						}
-						else if (file.ToString().Contains("EYU"))
+						//else if (file.ToString().Contains("EYU"))
 
-						{
-							text_to_replace = text_to_replace.Substring(2, 2);
-							replacing_text = replacing_text.Substring(2, 2);
+						//{
+						//	text_to_replace = text_to_replace.Substring(2, 2);
+						//	replacing_text = replacing_text.Substring(2, 2);
 
-						}
+						//}
 
 						file_path = Path.GetDirectoryName(file); // ex: C:\TextReplacer\TextReplacer
 
 						//file_extension = Path.GetExtension(file);
+
 						file_name = Path.GetFileNameWithoutExtension(file).Replace(text_to_replace, replacing_text); // ex: ediLineEPS19
+
+
 						new_file = Path.Combine(file_path, $@"{file_name}{file_extension}");
+
 					}
-
-
+					copy_file = Path.Combine(filesCopyFolder, $@"{ file_name}{ file_extension}");
 					listOfNewFiles.Add(new_file);
-
 					var file_encoding = GetFileEncoding(file);
 					var file_content = new StringBuilder();
 					const int BufferSize = 128;
@@ -263,16 +316,14 @@ namespace TextReplacer
 							file_content.AppendLine(line.Replace(text_to_replace, replacing_text));
 						}
 					}
-
+					using (var streamWriter1 = new StreamWriter(new FileStream(copy_file, FileMode.Create, FileAccess.ReadWrite), file_encoding))
 					using (var streamWriter = new StreamWriter(new FileStream(new_file, FileMode.Create, FileAccess.ReadWrite), file_encoding))
 					{
 						streamWriter.Write(file_content.ToString());
-
+						streamWriter1.Write(file_content.ToString());
 					}
-
-					
-				});
-
+					//Path.Combine(filesCopyFolder, new_file);
+				}
 				//WritFilesToGit(listOfNewFiles);
 			}
 			catch (Exception ex)
@@ -281,7 +332,6 @@ namespace TextReplacer
 				alertMessage.Foreground = Brushes.Red;
 				alertMessage.Visibility = Visibility.Visible;
 			}
-
 		}
 
 		private void WritFilesToGit(List<string> listOfNewFiles)
@@ -289,11 +339,10 @@ namespace TextReplacer
 			var appended_files = listOfNewFiles.Select(f => $"\"{f}\"")
 										.Aggregate("add ", (acc, f) => $"{acc} {f}");
 
-			string path = @"C:\" + CodePath.Text + @"\FilesCreatedPaths.txt";
-
+			string path = $@"C:\{ CodePath.Text}\ComplianceChanges_{ ReplaceWith.Text}\FilesCreatedPaths.txt";
 
 			TextWriter tw = new StreamWriter(path);
-			foreach(var f in listOfNewFiles)
+			foreach (var f in listOfNewFiles)
 				tw.WriteLine(f);
 			tw.Close();
 
