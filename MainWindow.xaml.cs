@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -90,25 +91,46 @@ namespace TextReplacer
 				return;
 			}
 
-			switch (rb.Name)
+			switch (Task.SelectedIndex)
 			{
-				case "P11D":
-					GenerateP11DFiles();
-					break;
-				case "EDI":
-					GenerateEDIFiles();
-					break;
-				case "ALL":
+				case 0:
 					GenerateP11DFiles();
 					GenerateEDIFiles();
 					break;
-				case "OTHER":
+				case 1:
+					GenerateP11DFiles();
+					break;
+				case 2:
+					GenerateEDIFiles();
+					break;
+				
+				case 3:
 					ContructFiles(true);
+					break;
+				case 4:
+					ExecuteSQL();
 					break;
 			}
 			WritFilesToGit(listOfNewFiles);
+		}
+
+		private void ExecuteSQL()
+		{
+			var files=Path.GetFileName(@"C:\ihcm.git\ComplianceChanges_2019");
+			string sqlConnectionString = "Data Source=local;Initial Catalog=Doves;Integrated Security=True";
+
+			FileInfo file = new FileInfo(@"C:\ihcm.git\ComplianceChanges_2019");
+
+			string script = file.OpenText().ReadToEnd();
+
+			SqlConnection conn = new SqlConnection(sqlConnectionString);
+
+			//Server server = new Server(new ServerConnection(conn));
+
+			//server.ConnectionContext.ExecuteNonQuery(script);
 
 		}
+
 		private void GenerateEDIFiles()
 		{
 			try
@@ -372,42 +394,34 @@ namespace TextReplacer
 				//Console.WriteLine(output);
 				//Console.WriteLine(error);
 
-				alertMessage.Foreground = Brushes.Green;
+				alertMessage.Foreground = Brushes.Violet;
 				alertMessage.Text = "Files created, check " + path + " for list of files created";
 				alertMessage.Visibility = Visibility.Visible;
 			}
 		}
 
-		private void P11D_Checked(object sender, RoutedEventArgs e)
+		private void Task_Selected(object sender, RoutedEventArgs e)
 		{
-			rb = sender as RadioButton;
-			//choiceTextBlock.Text = "You chose: " + rb.GroupName + ": " + rb.Name;
-			DropLocation.Visibility = Visibility.Hidden;
-			PathForCode.Visibility = Visibility.Visible;
-		}
+			int index=Task.SelectedIndex;
 
-		private void EDI_Checked(object sender, RoutedEventArgs e)
-		{
-			rb = sender as RadioButton;
-			DropLocation.Visibility = Visibility.Hidden;
-			PathForCode.Visibility = Visibility.Visible;
-			//choiceTextBlock.Text = "You chose: " + rb.GroupName + ": " + rb.Name;
-		}
+			//ComboBoxItem cb = sender as ComboBoxItem;
 
-		private void Other_Checked(object sender, RoutedEventArgs e)
-		{
-			rb = sender as RadioButton;
-			DropLocation.Visibility = Visibility.Visible;
-			PathForCode.Visibility = Visibility.Hidden;
+			if (index == 0 || index == 1 || index == 2)
+			{
+				PathForCode.Visibility = Visibility.Visible;
+				DropLocation.Visibility = Visibility.Hidden;
+			}
+			else if (index == 4)
+			{
+				PathForCode.Visibility = Visibility.Hidden;
+				DropLocation.Visibility = Visibility.Visible;
+			}
+			else
+			{
+				PathForCode.Visibility = Visibility.Hidden;
+				DropLocation.Visibility = Visibility.Hidden;
+			}
 
-		}
-
-		private void ALL_Checked(object sender, RoutedEventArgs e)
-		{
-			rb = sender as RadioButton;
-			//choiceTextBlock.Text = "You chose: " + rb.GroupName + ": " + rb.Name;
-			DropLocation.Visibility = Visibility.Hidden;
-			PathForCode.Visibility = Visibility.Visible;
 		}
 	}
 }

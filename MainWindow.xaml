@@ -19,7 +19,7 @@
     <Border Background="#2e3137" CornerRadius="20" Margin="20">
 
         <StackPanel Margin="20">
-			<TextBlock TextWrapping="Wrap" Name="alertMessage"  Foreground="Green" Visibility="Hidden" FontSize="15" HorizontalAlignment="Center"></TextBlock>
+			<TextBlock TextWrapping="Wrap" Name="alertMessage"  Foreground="Green" Visibility="Hidden" FontSize="20" HorizontalAlignment="Center"></TextBlock>
 
 			<Label Content="Maintanance Work Automation" Foreground="White" FontSize="25" HorizontalAlignment="Center"></Label>
 
@@ -46,10 +46,21 @@
             <!--<Separator></Separator>-->
 			<Grid>
 				<StackPanel Margin = "5">
-					<RadioButton x:Name = "ALL" Margin = "5"  GroupName = "Task" Foreground="White" Content = "ALL" Checked="ALL_Checked" />
+					<!--<RadioButton x:Name = "ALL" Margin = "5"  GroupName = "Task" Foreground="White" Content = "ALL" Checked="ALL_Checked" />
 					<RadioButton x:Name = "P11D" Margin = "5"  GroupName = "Task" Foreground="White" Content = "P11D" Checked="P11D_Checked" />
 					<RadioButton x:Name = "EDI" Margin = "5"  GroupName = "Task" Foreground="White" Content = "EDI(FPS and EPS)" Checked="EDI_Checked" />
-					<RadioButton x:Name = "OTHER" Margin = "5"  GroupName = "Task" Foreground="White" Content = "Other" Checked="Other_Checked" />
+					<RadioButton x:Name = "OTHER" Margin = "5"  GroupName = "Task" Foreground="White" Content = "Other" Checked="Other_Checked" />-->
+					<StackPanel x:Name="Options"  >
+						<Label Content="Enter Task to perform" Foreground="White"></Label>
+						<ComboBox Name="Task" HorizontalAlignment="Left"  Width="345" Background="#545d6a" Foreground="#545d6a" SelectionChanged="Task_Selected">
+							<ComboBoxItem Content = "ALL" />
+							<ComboBoxItem Content = "P11D" />
+							<ComboBoxItem Content = "EDI(FPS and EPS)"  />
+							<ComboBoxItem Content = "ExecuteSQL" />
+							<ComboBoxItem Content = "Other" />
+						</ComboBox>
+					</StackPanel>
+
 				</StackPanel>
 				
 			</Grid>
@@ -72,8 +83,9 @@
                 </StackPanel>
             </ScrollViewer>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="37,0" Height="78">
-				<Button Click="ClearFiles_Click" HorizontalAlignment="Center" x:Name="ClearFiles" Content="Clear Selected Files" Margin="60 20" Background="#545d6a" Foreground="White" Width="200" Height="40"/>
-				<Button Click="Submit_Click" HorizontalAlignment="Center" x:Name="Submit" Content="Submit" Margin="60 20" Background="#545d6a" Foreground="White" Width="200" Height="40"/>
+
+				<Button Click="ClearFiles_Click" HorizontalAlignment="Center" x:Name="ClearFiles" Content="Clear Selected Files" Margin="60 20" Background="#545d6a" Foreground="White" Width="150" Height="40"/>
+				<Button Click="Submit_Click" HorizontalAlignment="Center" x:Name="Submit" Content="Submit" Margin="60 20" Background="#545d6a" Foreground="White" Width="150" Height="40"/>
 			</StackPanel>
 		</StackPanel>
 
